@@ -1,0 +1,84 @@
+// Draws all the transparent meshes from the transparent actors array. [self recalculateAspectRatioWithOldAspect: oldAspect newAspect: aspect];
+- (void) recalculateAspectRatioWithOldAspect:(float) oldAspect newAspect: (float)newAspect
+{
+
+//    // Prepare the input buffers
+//    id<MTLBuffer> positionsBuffer = [_device newBufferWithBytes:(GUIVertexUniforms*)_UIController->getUnifromBuffers(0)
+//                                                          length:sizeof(GUIVertexUniforms) * 4
+//                                                         options:MTLResourceStorageModeShared];
+
+
+    if (isnan(oldAspect)||oldAspect == 0){
+        oldAspect = newAspect;
+    }
+
+    std::cout << "Aspect: " << oldAspect << ", " << newAspect << " = " << oldAspect/newAspect <<std::endl;
+//    if(oldAspect/newAspect<1){
+//        std::cout << "Less than one: " << oldAspect/newAspect << "\n";
+//    }
+
+    id<MTLBuffer> aspectRatioBuffer = [_device newBufferWithBytes:&oldAspect
+                                                           length:sizeof(float)
+                                                          options:MTLResourceStorageModeShared];
+    id<MTLBuffer> aspectRatioBufferB = [_device newBufferWithBytes:&newAspect
+                                                           length:sizeof(float)
+                                                          options:MTLResourceStorageModeShared];
+
+    // Create a command buffer and command encoder
+    id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
+    id<MTLComputeCommandEncoder> commandEncoder = [commandBuffer computeCommandEncoder];
+
+    [commandEncoder pushDebugGroup:@"g"];
+
+    // Set up the pipeline and buffers for the compute shader
+    [commandEncoder setComputePipelineState:_recalculateAspectPipeline];
+    [commandEncoder setBuffer:_UIController->getUnifromBuffers(0) offset:0 atIndex:0];
+    [commandEncoder setBuffer:aspectRatioBuffer offset:0 atIndex:1];
+    [commandEncoder setBuffer:aspectRatioBufferB offset:0 atIndex:2];
+
+    // Calculate thread group size
+    MTLSize gridSize = MTLSizeMake(4, 1, 1);
+    NSUInteger threadGroupSize = _recalculateAspectPipeline.maxTotalThreadsPerThreadgroup;
+    MTLSize threadgroupSize = MTLSizeMake(threadGroupSize, 1, 1);
+
+    // Encode the dispatch
+    [commandEncoder dispatchThreads:gridSize threadsPerThreadgroup:threadgroupSize];
+
+    [commandEncoder popDebugGroup];
+
+    // End encoding and commit the command buffer
+    [commandEncoder endEncoding];
+    [commandBuffer commit];
+    [commandBuffer waitUntilCompleted];
+}
+
+
+
+id<MTLComputePipelineState> _recalculateAspectPipeline;
+
+
+// Set up the GUI pipeline that readjusts the elements after chaning the aspect ratio
+{
+    id<MTLFunction> kernelFunction = [defaultLibrary newFunctionWithName:@"adjustPositions"];
+    
+    _recalculateAspectPipeline = [_device newComputePipelineStateWithFunction:kernelFunction error:&error];
+    NSAssert(_initImageBlockPipeline, @"Failed to create init image block tile shaer pipeline: %@", error);
+}
+
+
+shader code:
+
+kernel void adjustPositions(
+    device GUIVertexUniforms* positions [[buffer(0)]],
+    const device float *oldAspectRatio [[buffer(1)]],
+    const device float *aspectRatio [[buffer(2)]],
+    uint id [[thread_position_in_grid]]
+) {
+    // Scale the x-coordinate based on the aspect ratio
+
+    positions[id].sizes.x /= *oldAspectRatio / *aspectRatio;
+
+
+    //positions[id].sizes.y *= ;
+}
+
