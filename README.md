@@ -28,23 +28,23 @@ The UI engine contains the text engine. The UI engine itself supports UI states.
 
 The first additional UI state is "Notes" (denoted in the files as Notes-1). It is a mock up for text editing, and texture rendering. The text engine will be brought up later.
 
-![Cursor blinking in the notes UI](UI Images/NotesAnimation.gif)
+![Cursor blinking in the notes UI](Far Stars/UI Images/NotesAnimation.gif)
 
 The second additional UI state is "KeyBinds" (denoted as KeyBinds-2). This UI state allows the rebinding of keys. It also demonstrates scrolling support. It contains buttons, text, and static elements.
 
-![Editing keybinds, scrolling, then using the new keybinds.](UI Images/Keybinds.gif)
+![Editing keybinds, scrolling, then using the new keybinds.](Far Stars/UI Images/Keybinds.gif)
 
 The third additional UI state is "Debug" (denoted as Debug-3). This UI state has no UI elements, only text. It displays the FPS, position of the player, and aspect ratio. It may be edited easily in the future to display more or more complex values. 
 
-![Statistics updating in real-time on screen.](UI Images/Debug.gif)
+![Statistics updating in real-time on screen.](Far Stars/UI Images/Debug.gif)
 
 The main focus of the text editor is support for batched inputs (i.e. typing multiple things at once OR if the game slows down for any other reason, no keystrokes will be lost, and they will be updated in the most efficient manor). The text editor supports adding, deleting, highlighting, copying, cuting, pasting text, and selecting all. The text editor also supports multiple text groups, each with unique parameters (such as you can only type integers). These parameters may include restricitons on size (such as you can only type three lines OR you can only type 70 characters.), or details about what the font looks like (color or visual size).
 
-![Typing.](UI Images/NotesAnimation.gif)
+![Typing.](Far Stars/UI Images/NotesAnimation.gif)
 
 The font is custom made in an older version of this program. It contains 97 unique symbols, as well as 3 spacing characters ('\0', ' ', '\n'). The font is called Prime Grandeur Bold. An image is generated for the highest resolution text on screen. Each symbol is represented as quadratic Beziér curves. This text references this texture. This allows more efficent text display, as the expensive curve intersection code only needs to be ran when there is a new largest text group or if the screen resolution changes. In the image, each letter has a border of 5 pixels to prevent the edge of one letter being seen in the next.
 
-![Sample Image.](UI Images/Font.png)
+![Sample Image.](Far Stars/UI Images/Font.png)
 
 
 ## Usage

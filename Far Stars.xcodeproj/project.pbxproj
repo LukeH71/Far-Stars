@@ -41,7 +41,7 @@
 		1444FF802C179E7E00F4A705 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1444FF812C179E7E00F4A705 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1444FF822C179E7E00F4A705 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1444FF832C179E7E00F4A705 /* 1st game.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "1st game.entitlements"; sourceTree = "<group>"; };
+		1444FF832C179E7E00F4A705 /* Far Stars.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Far Stars.entitlements"; sourceTree = "<group>"; };
 		1444FF842C179E7E00F4A705 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		1444FF852C179E7E00F4A705 /* GameViewController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = GameViewController.m; sourceTree = "<group>"; };
 		1444FF862C179E7E00F4A705 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,10 +119,9 @@
 			path = "Physical Input";
 			sourceTree = "<group>";
 		};
-		1444FF8E2C179E7E00F4A705 /* 1st game */ = {
+		1444FF8E2C179E7E00F4A705 /* Far Stars */ = {
 			isa = PBXGroup;
 			children = (
-				1499E76A302A3BD5005518B9 /* README.md */,
 				1499E76D302A3EE5005518B9 /* UI Images */,
 				144558C32C811069008D8519 /* PlayerController.h */,
 				1499E76730264FC1005518B9 /* KeyBinds.h */,
@@ -134,7 +133,7 @@
 				145E1E172C3061ED00E9ABC6 /* Shaders */,
 				1444FF9A2C17A26B00F4A705 /* Game Engine */,
 			);
-			path = "1st game";
+			path = "Far Stars";
 			sourceTree = "<group>";
 		};
 		1444FF9A2C17A26B00F4A705 /* Game Engine */ = {
@@ -147,7 +146,7 @@
 				1444FF852C179E7E00F4A705 /* GameViewController.m */,
 				1444FF872C179E7E00F4A705 /* main.m */,
 				1444FF892C179E7E00F4A705 /* Main.storyboard */,
-				1444FF832C179E7E00F4A705 /* 1st game.entitlements */,
+				1444FF832C179E7E00F4A705 /* Far Stars.entitlements */,
 				1444FF822C179E7E00F4A705 /* Assets.xcassets */,
 				1444FF862C179E7E00F4A705 /* Info.plist */,
 				1444FF7C2C179E7E00F4A705 /* Audio */,
@@ -245,7 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				140A26132D18CCA1002ACFEC /* far-stars-info.plist */,
-				1444FF8E2C179E7E00F4A705 /* 1st game */,
+				1499E76A302A3BD5005518B9 /* README.md */,
+				1444FF8E2C179E7E00F4A705 /* Far Stars */,
 				14F9E9172BB1EE5100CB4A6E /* Products */,
 				14FFE8452C153C4C001A75FB /* Frameworks */,
 			);
@@ -507,7 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "1st game/Game Engine/1st game.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Far Stars/Game Engine/Far Stars.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -544,7 +544,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "1st game/Game Engine/1st game.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Far Stars/Game Engine/Far Stars.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
