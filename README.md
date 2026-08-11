@@ -1,6 +1,8 @@
 # Far Stars Game Engine
 
-A lightweight C++ game engine optimized for MacOS.
+A lightweight C++ game engine optimized for macOS.
+
+![Statistics updating in real-time on screen.](Far-Stars/UI-Images/Debug.gif)
 
 ## Table of Contents
 - [About](#about)
@@ -19,12 +21,12 @@ Currently this version is being worked on. I plan to add many more features in t
 
 ## Audio Engine
 
-The audio engine is currently disabled (commented out). However, it does play sound if uncommented and used. The reason for it to be commented out is so that I can in the future design a better audio engine with lower level API's built around spacial sound.
+The audio engine is currently disabled (commented out). However, it does play sound if uncommented and used. The reason for it to be commented out is so that I can in the future design a better audio engine with lower level API's built around spatial sound.
 
 
 ## UI Engine
 
-The UI engine contains the text engine. The UI engine itself supports UI states. The UI state of 0 is always visible ontop of gameplay. It may contain health, a hotbar, etc. If the UI state is not 0, the graphics of state 0 remain visible. Ontop of that however is a different UI. Cureently, there are 3 additional UI states. There may be an infinite number, integer size limits allowing.
+The UI engine contains the text engine. The UI engine itself supports UI states. The UI state of 0 is always visible on top of gameplay. It may contain health, a hotbar, etc. If the UI state is not 0, the graphics of state 0 remain visible. On top of that however is a different UI. Currently, there are 3 additional UI states. There may be an infinite number, integer size limits allowing.on top
 
 The first additional UI state is "Notes" (denoted in the files as Notes-1). It is a mock up for text editing, and texture rendering. The text engine will be brought up later.
 
@@ -36,13 +38,13 @@ The second additional UI state is "KeyBinds" (denoted as KeyBinds-2). This UI st
 
 The third additional UI state is "Debug" (denoted as Debug-3). This UI state has no UI elements, only text. It displays the FPS, position of the player, and aspect ratio. It may be edited easily in the future to display more or more complex values. 
 
-![Statistics updating in real-time on screen.](Far-Stars/UI-Images/Debug.gif)
+See the demo GIF at the top of the README.
 
-The main focus of the text editor is support for batched inputs (i.e. typing multiple things at once OR if the game slows down for any other reason, no keystrokes will be lost, and they will be updated in the most efficient manor). The text editor supports adding, deleting, highlighting, copying, cuting, pasting text, and selecting all. The text editor also supports multiple text groups, each with unique parameters (such as you can only type integers). These parameters may include restricitons on size (such as you can only type three lines OR you can only type 70 characters.), or details about what the font looks like (color or visual size).
+The main focus of the text editor is support for batched inputs (i.e. typing multiple things at once OR if the game slows down for any other reason, no keystrokes will be lost, and they will be updated in the most efficient manner). The text editor supports adding, deleting, highlighting, copying, cutting, pasting text, and selecting all. The text editor also supports multiple text groups, each with unique parameters (such as you can only type integers). These parameters may include restrictions on size (such as you can only type three lines OR you can only type 70 characters.), or details about what the font looks like (color or visual size).
 
 ![Typing.](Far-Stars/UI-Images/NotesAnimation.gif)
 
-The font is custom made in an older version of this program. It contains 97 unique symbols, as well as 3 spacing characters ('\0', ' ', '\n'). The font is called Prime Grandeur Bold. An image is generated for the highest resolution text on screen. Each symbol is represented as quadratic Beziér curves. This text references this texture. This allows more efficent text display, as the expensive curve intersection code only needs to be ran when there is a new largest text group or if the screen resolution changes. In the image, each letter has a border of 5 pixels to prevent the edge of one letter being seen in the next.
+The font is custom made in an older version of this program. It contains 97 unique symbols, as well as 3 spacing characters ('\0', ' ', '\n'). The font is called Prime Grandeur Bold. An image is generated for the highest resolution text on screen. Each symbol is represented as quadratic Bézier curves. This text references this texture. This allows more efficient text display, as the expensive curve intersection code only needs to be ran when there is a new largest text group or if the screen resolution changes. In the image, each letter has a border of 5 pixels to prevent the edge of one letter being seen in the next.
 
 ![Sample Image.](Far-Stars/UI-Images/Font.png)
 
@@ -86,7 +88,7 @@ void UIController::loadShop(){
     
     // ...
     
-    // Add text groups by calling this fuction
+    // Add text groups by calling this function
     _stateXTextGroups = addTextGroups(textGroupsStatic, textGroupsChangeable, {titleParams});
 
     // Set the buffer values
@@ -143,7 +145,7 @@ void UIController::switchUIStateShop(){
     }
 }
 
-void UIController::stepUILogicKShop(uint8_t currentBufferIndex){
+void UIController::stepUILogicShop(uint8_t currentBufferIndex){
     
     // Get the mouse pos
     CGPoint mousePos = [_mtkView getMousePos];
@@ -154,7 +156,7 @@ void UIController::stepUILogicKShop(uint8_t currentBufferIndex){
     mousePos.y -= *_scrollOffset;
     
     
-    // Follow logic as layed out in UIBackend or write your own logic
+    // Follow logic as laid out in UIBackend or write your own logic
     
     
 }
