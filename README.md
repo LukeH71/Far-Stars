@@ -72,7 +72,7 @@ void UIController::loadShop(){
     _numElementsStatic = 0; // 0 static elements
     _numElementsButtons = _numElementsStatic + 1; // 1 button
     _numElementsDraggable = _numElementsButtons + 0; // 0 draggable items
-    _numElementsTextFeilds = _numElementsDraggable + 2; // 2 buttons
+    _numElementsTextFeilds = _numElementsDraggable + 2; // 2 text fields
     
     std::vector<GUIVertex> elements = {
         // Define each element, referencing the below two variables
@@ -124,7 +124,7 @@ void UIController::loadShop(){
     // Apply max scrolling value if applicable (otherwise scrolling will be disabled)
     [_mtkView setScrollingBottomDistTo:-scrollingBottomDist-1];
     
-    // Recalculate the character Atlas size to the new UI
+    // Recalculate the character atlas size to the new UI
     recalculateCharacterAtlas(int(_mtkView.drawableSize.height));
     
 }
