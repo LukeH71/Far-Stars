@@ -51,6 +51,7 @@ The font is custom made in an older version of this program. It contains 97 uniq
 
 ## Usage
 
+To get this code running on your computer, a version of macOS is required, optimally 26.5.2 or later. Additionally, Xcode is required to compile, optimally version 26.6 or later. To compile, load the code into the editor, and press run. To add new features, access the `Renderer.mm` file. The function `(void) drawInMTKView:(nonnull MTKView*) view` is called for each frame. Files inside the game engine folder are not necessary to edit, but may be to add features. 
 
 To create a UI state, first find a name and unused UI state numeration, such as `Shop` and `5`. 
 
